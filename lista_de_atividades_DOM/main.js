@@ -1,7 +1,6 @@
 //Cria elemento H1
 let titulo  = document.createElement("h1");
 
-
 //Texto visivel na tela
 titulo.innerHTML = "Lista de Atividades";
 
@@ -35,7 +34,7 @@ botao.addEventListener("click", function(evt){
 	evt.preventDefault();
 	//Adiciona a lista de atividade
 	if (input.value != ""){
-	adicionarAtividade(input.value);}
+		adicionarAtividade(input.value);}
 
 	//Limpa o input
 	input.value = "";
@@ -58,25 +57,18 @@ function adicionarAtividade(atividade){
 	let li = document.createElement("li");
 	li.innerHTML = atividade;
 	lista.appendChild(li);
-	let x = 0;
+	let flag = false;
 
-	//Evento listener, aguardando um click para executar uma ação
-	
-	li.addEventListener("click", function (){
-	//	console.log ("Ok");
-		
-		if (x === 1){
-			li.classList.remove("text-muted");
-			li.style = "text-decoration: ";
-			x = x+ 1;}
-
-		if (x === 0){
-			li.style = "text-decoration: line-through";
+	//Evento listener, aguardando um click para executar uma ação	
+	li.addEventListener("click", function(){
+		if (flag){
 			li.classList.add("text-muted");
-			x = x+ 1;}
+			li.style = "text-decoration: line-through";}
 
-		if (x===2){
-			x=0;}
+		else{
+			li.style = "text-decoration: ";
+			li.classList.remove("text-muted");}
+		flag=!flag;
 	})	
 }
 
